@@ -4,7 +4,7 @@
   "description": "",
   "main": "main.js",
   "volta": {
-    "node": "v18.13.0"
+    "node": "18.13.0"
   },
   "scripts": {
     "start": "electron-forge start",
