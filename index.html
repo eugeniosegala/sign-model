@@ -1,10 +1,66 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<style>
+  h1 {
+    font-family: "Lobster", sans-serif;
+    text-align: center;
+    font-size: 48px;
+    color: #37AEE2;
+  }
+  p {
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    text-align: center;
+  }
+  strong {
+    font-weight: 700;
+  }
+  button {
+    background-image: linear-gradient(-180deg, #37AEE2 0%, #1E96C8 100%);
+    border-radius: .5rem;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    display: block;
+    width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 16px;
+    padding: 1rem 1.75rem;
+    text-decoration: none;
+    border: 0;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  button:hover {
+    background-image: linear-gradient(-180deg, #1D95C9 0%, #17759C 100%);
+  }
+  #webcam-container {
+    margin: auto;
+    width: 300px;
+  }
+  #label-container {
+    display: none;
+  }
+  #output {
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+  }
+</style>
+<h1>SignIfy</h1>
+<p><strong>Creato da</strong>: <em>Improda Miriam</em>, <em>Baccheschi Jacopo</em>, <em>Accinno Martina</em></p>
 <br />
-<button type="button" id="start-ai" onclick="init()">Start</button>
-<br /><br />
-<div id="output"><strong>Translation: </strong></div>
-<br /><br />
+<button type="button" id="start-ai" onclick="init()">Avvia Programma</button>
+<br />
 <div id="webcam-container"></div>
 <br />
+<div id="output"><strong>Traduzione: </strong> </div>
+<br /><br />
 <div id="label-container"></div>
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
@@ -24,7 +80,7 @@
 
     const startButton = document.getElementById("start-ai");
     startButton.disabled = true; // Disable the button
-    startButton.innerText = "Loading..."; // Change the text
+    startButton.innerText = "Caricamento..."; // Change the text
 
 
     // load the model and metadata
@@ -36,7 +92,7 @@
 
     // Convenience function to setup a webcam
     const flip = true; // whether to flip the webcam
-    webcam = new tmImage.Webcam(200, 200, flip); // width, height, flip
+    webcam = new tmImage.Webcam(300, 300, flip); // width, height, flip
     await webcam.setup(); // request access to the webcam
     await webcam.play();
     window.requestAnimationFrame(loop);
@@ -91,7 +147,7 @@
       if (maxProbClass && maxProbClass !== "NONE") {
         outputElement.textContent += ` ${maxProbClass}`; // Append the class name directly to the text
       }
-    }, 2000);
+    }, 5000);
   }
 
   // Call the function to start the process
