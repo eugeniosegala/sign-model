@@ -9,7 +9,10 @@ module.exports = {
   makers: [
     {
       name: '@electron-forge/maker-squirrel',
-      config: {},
+      config: {
+        authors: 'Alice and Bob',
+        description: 'An example Electron app'
+      }
     },
     {
       name: '@electron-forge/maker-zip',
